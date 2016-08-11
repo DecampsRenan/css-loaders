@@ -1,5 +1,6 @@
 $bouncy-timing: cubic-bezier(0.680, -0.550, 0.265, 1.550)
 $pulse-timing: cubic-bezier(.22,.91,.55,1)
+$phase-timing: cubic-bezier(.6,.43,.14,.98)
 
 body
   font-family: "Helvetica"
@@ -97,9 +98,12 @@ body
 // spinner 4
 .spinner--4
   @extend .spinner
-  animation: 2s linear infinite
+  animation: phase 2s $phase-timing infinite
+  background-color: orangered
+  opacity: .8
 
   &::before, &::after
+    display: none
 
 // spinner 5
 .spinner--5
@@ -139,6 +143,24 @@ body
 //--------------
 // Animations
 //--------------
+
+// phase
+@keyframes phase
+  0%
+    border-radius: 20%
+    transform: rotate(0deg) scale(1)
+    opacity: .8
+  50%
+    border-radius: 100%
+    transform: rotate(720deg) scale(.2)
+    opacity: .8
+  75%
+    opacity: 0
+    border-radius: 20%
+    transform: scale(.2)
+  76%
+    border-radius: 20%
+    transform: scale(1)
 
 // pulse
 @keyframes pulse
