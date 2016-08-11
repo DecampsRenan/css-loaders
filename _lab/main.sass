@@ -1,0 +1,169 @@
+$bouncy-timing: cubic-bezier(0.680, -0.550, 0.265, 1.550)
+$pulse-timing: cubic-bezier(.22,.91,.55,1)
+
+body
+  font-family: "Helvetica"
+  text-align: center
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 0 auto
+  padding: 50px 20px 0
+  background: #eee
+  color: #444
+
+.container
+  margin: 30px auto
+  width: 800px
+  padding: 2em
+  background-color: white
+  border-radius: 5px
+  box-shadow: 0 9px 35px #999
+
+  h1
+    text-transform: uppercase
+    text-shadow: 0 0 1px 1px white
+
+  &__content
+    margin-top: 2em
+    display: flex
+    justify-content: center
+
+//-------------
+// Spinners
+//-------------
+.spinner
+  display: block
+  position: relative
+  margin: 0 20px
+  background-color: #eee
+  border-radius: 100%
+  width: 50px
+  height: 50px
+
+  &::before, &::after
+    display: block
+    position: absolute
+    content: ' '
+    background-color: orangered
+    width: 15px
+    height: 15px
+    border-radius: 100%
+
+// spinner 1
+.spinner--1
+  @extend .spinner
+  background-color: transparent
+  animation: elipsis 3s $bouncy-timing infinite
+
+  &::after
+    right: 0
+    bottom: 0
+
+// spinner 2
+.spinner--2
+  @extend .spinner
+  background-color: transparent
+  animation: rotation 1s linear infinite
+
+  &::before, &::after
+    width: 46px
+    height: 46px
+    background-color: transparent
+  
+  &::before
+    border: 2px solid transparent
+    border-left: 2px solid orangered
+    border-bottom: 2px solid orangered
+
+// spinner 3
+.spinner--3
+  @extend .spinner
+  background-color: transparent
+
+  &::before, &::after
+    animation: pulse 2s $pulse-timing infinite
+    transform-origin: center
+    width: 50px
+    height: 50px
+    background-color: orangered
+    opacity: 1
+  
+  &::before
+    animation-delay: -.3s
+
+
+
+// spinner 4
+.spinner--4
+  @extend .spinner
+  animation: 2s linear infinite
+
+  &::before, &::after
+
+// spinner 5
+.spinner--5
+  @extend .spinner
+  animation: 2s linear infinite
+
+  &::before, &::after
+
+// spinner 6
+.spinner--6
+  @extend .spinner
+  animation: 2s linear infinite
+
+  &::before, &::after
+
+// spinner 7
+.spinner--7
+  @extend .spinner
+  animation: 2s linear infinite
+
+  &::before, &::after
+
+// spinner 8
+.spinner--8
+  @extend .spinner
+  animation: 2s linear infinite
+
+  &::before, &::after
+
+// spinner 9
+.spinner--9
+  @extend .spinner
+  animation: 2s linear infinite
+
+  &::before, &::after
+
+//--------------
+// Animations
+//--------------
+
+// pulse
+@keyframes pulse
+  from
+    transform: scale(0)
+    opacity: 1
+  to
+    transform: scale(1)
+    opacity: 0
+
+// rotation
+@keyframes rotation
+  from
+    transform: rotate(0deg) 
+  to
+    transform: rotate(360deg)
+
+
+
+
+// elipsis
+@keyframes elipsis
+  0%
+    transform: rotate(0deg) scale(1)
+  50%
+    transform: rotate(360deg) scale(.5)
+  100%
+    transform: rotate(720deg) scale(1)
